@@ -2,7 +2,7 @@ package main
 
 import (
 	"log"
-    "github.com/sklknn/gotelegramm/commands"
+    "commands/commands"
     "time"
 	"github.com/PaulSonOfLars/gotgbot/v2"
 	"github.com/PaulSonOfLars/gotgbot/v2/ext"
