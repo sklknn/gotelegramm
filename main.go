@@ -2,7 +2,7 @@ package main
 
 import (
 	"log"
-    "commands/commands"
+    "github.com/sklknn/gotelegramm/pkg/commands"
     "time"
 	"github.com/PaulSonOfLars/gotgbot/v2"
 	"github.com/PaulSonOfLars/gotgbot/v2/ext"
@@ -27,7 +27,7 @@ func main() {
 	})
 	updater := ext.NewUpdater(dispatcher, nil)
 	//introduce
-	dispatcher.AddHandler(handlers.NewCommand("start", start))
+	dispatcher.AddHandler(handlers.NewCommand("start", commands.Start))
 
 	err = updater.StartPolling(bot, &ext.PollingOpts{
 		DropPendingUpdates: true,

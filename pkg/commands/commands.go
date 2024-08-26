@@ -6,7 +6,7 @@ import (
     "fmt"
 )
 
-func start(bot *gotgbot.Bot, context *ext.Context) error {
+func Start(bot *gotgbot.Bot, context *ext.Context) error {
 	_, err := context.EffectiveMessage.Reply(bot, fmt.Sprintf("Привет, Я %s, \nЯ простой бот чтобы продемонстрировать как работает gotgbotapi, а еще попрактиковаться в программировании на Go", bot.User.Username), &gotgbot.SendMessageOpts{
 		ParseMode: "HTML",
 	})
