@@ -17,7 +17,9 @@ func main() {
         log.Println("Не удалось получить токен: " + err.Error())
     }
 
-	bot, err := gotgbot.NewBot(string(token), nil)
+    println(string(token))
+
+    bot, err := gotgbot.NewBot(string(token)[:len(token)-1], nil)
 	if err != nil {
 		panic("Не удалось создать нового бота: " + err.Error())
 	}
