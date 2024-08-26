@@ -7,12 +7,17 @@ import (
 	"github.com/PaulSonOfLars/gotgbot/v2"
 	"github.com/PaulSonOfLars/gotgbot/v2/ext"
 	"github.com/PaulSonOfLars/gotgbot/v2/ext/handlers"
+    "os"
 )
 
 func main() {
-	token := ""
 
-	bot, err := gotgbot.NewBot(token, nil)
+    token, err := os.ReadFile("./TOKEN.txt")
+    if err != nil {
+        log.Println("Не удалось получить токен: " + err.Error())
+    }
+
+	bot, err := gotgbot.NewBot(string(token), nil)
 	if err != nil {
 		panic("Не удалось создать нового бота: " + err.Error())
 	}
