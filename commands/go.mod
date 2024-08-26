@@ -1,4 +1,4 @@
-module commands
+module github.com/sklknn/gotelegramm/commands
 
 go 1.23.0
 
