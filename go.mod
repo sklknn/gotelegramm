@@ -1,4 +1,4 @@
-module TelegrammBotTest
+module github.com/sklknn/gotelegramm
 
 go 1.23.0
 
