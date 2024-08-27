@@ -8,8 +8,8 @@ import (
 	"github.com/PaulSonOfLars/gotgbot/v2"
 	"github.com/PaulSonOfLars/gotgbot/v2/ext"
 	"github.com/PaulSonOfLars/gotgbot/v2/ext/handlers"
-    "github.com/PaulSonOfLars/gotgbot/v2/ext/handlers/conversation"
 	"github.com/sklknn/gotelegramm/pkg/commands"
+    "github.com/sklknn/gotelegramm/pkg/conversation"
 )
 
 func main() {
@@ -39,20 +39,8 @@ func main() {
 	dispatcher.AddHandler(handlers.NewCommand("start", commands.Start))
     //user help
     dispatcher.AddHandler(handlers.NewCommand("help", commands.Help))
-    //conversation 
-    dispatcher.AddHandler(handlers.NewConversation(
-        []ext.Handler{handlers.NewCommand("pizza", commands.Conversation)},
-        map[string][]ext.Handler{
-            NAME : {handlers.NewMessage(noCommands, name)},
-            PIZZA : {handlers.NewMessage(noCommands, pizza)},
-            ADDRESS : {handlers.NewMessage(noCommands, address)},
-        },
-        &handlers.ConversationOpts{
-            Exits : []ext.Handler{handlers.NewCommand("cancel_order", commands.EndConversation)},
-            StateStorage : conversation.NewInMemoryStorage(conversation.KeyStrategySenderAndChat),
-    AllowReEntry : true,
-        },
-        ))
+
+    conversation.OrderPizza(dispatcher)
 
 	err = updater.StartPolling(bot, &ext.PollingOpts{
 		DropPendingUpdates: true,
